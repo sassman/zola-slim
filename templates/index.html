@@ -1,9 +1,6 @@
 {% extends "base.html" %}
 
 {% block extra_head %}
-{% if config.extra.slim_netlify_identity %}
-<script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-{% endif %}
 {% endblock extra_head %}
 
 {% block content %}
@@ -15,17 +12,7 @@
 {% endblock content %}
 
 {% block extra_script %}
-{% if config.extra.slim_netlify_identity %}
-<script>
-    if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-            if (!user) {
-                window.netlifyIdentity.on("login", () => {
-                    document.location.href = "/admin/";
-                });
-            }
-        });
-    }
-</script>
+{% if config.extra.analytics %}
+<script async defer data-domain="{{config.extra.analytics}}" src="https://plausible.io/js/plausible.js"></script>
 {% endif %}
 {% endblock extra_script %}
