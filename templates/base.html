@@ -8,12 +8,13 @@
     <meta name="description" content="{% block description %}{{ config.description }}{% endblock description %}">
     <title>{% block title %}{{ config.title }}{% endblock title %}</title>
     <link rel="stylesheet"
-          href="{{ get_url(path="slim.css", trailing_slash=false) | safe }}?hash={{ get_file_hash(path="slim.css", sha_type=256) | truncate(length=8, end="") }}">
+          href="{{ get_url(path="slim.css", trailing_slash=false, cachebust=true) | safe }}">
     {% if config.generate_rss %}
     <link rel="alternate" type="application/rss+xml" title="{{ config.title }} RSS"
-          href="{{ get_url(path="rss.xml", trailing_slash=false) | safe }}?hash={{ get_file_hash(path="rss.xml", sha_type=256) | truncate(length=8, end="") }}">
+          href="{{ get_url(path="rss.xml", trailing_slash=false, cachebust=true) | safe }}">
     {% endif %}
-    {% block extra_head %}{% endblock extra_head %}
+    {% block extra_head %}
+    {% endblock extra_head %}
 </head>
 
 <body>
@@ -29,7 +30,12 @@
         </div>
         {{ macros::footer() }}
     </div>
-    <script src="{{ get_url(path="js/slim.js", trailing_slash=false) | safe }}?hash={{ get_file_hash(path="js/slim.js", sha_type=256) | truncate(length=8, end="") }}"></script>
+    <script>
+        document.querySelector('.nav-btn').onclick = function(e) {
+            e.preventDefault();
+            this.classList.toggle('is-on');
+        };
+    </script>
     {% block extra_script %}{% endblock extra_script %}
 </body>
 

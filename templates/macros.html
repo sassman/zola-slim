@@ -30,7 +30,7 @@
     {% if page.taxonomies.tags %}
     <div class="post-tags">
         {% for tag in page.taxonomies.tags %}
-        <span class="post-tag">#<a href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}index.html">{{ tag }}</a></span>
+        <a class="post-tag" href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}index.html">{{ tag }}</a>
         {% endfor %}
     </div>
     {% endif %}
@@ -44,8 +44,10 @@
     {% if config.extra.slim_summary %}
     {% if page.summary %}
     <div class="summary">
-        {{ page.summary | safe | striptags }}
-        <a class="read-more" href="{{ page.permalink | safe }}index.html">&hellip;</a>
+        <p>
+            {{ page.summary | safe | striptags }}
+        </p>
+        <a class="read-more" href="{{ page.permalink | safe }}index.html">Read more ⟶</a>
     </div>
     {% endif %}
     {% elif config.extra.slim_content %}
@@ -77,3 +79,12 @@
     {% endif %}
 </div>
 {% endmacro footer %}
+
+{% macro metadata(page) %}
+    <meta name="description" content="{% if page.summary %}{{ page.summary }}{% else %}{{ config.description }}{% endif %}">
+    <meta property="og:description"
+          content="{% if page.summary %}{{ page.summary }}{% else %}{{ config.description }}{% endif %}">
+    <meta property="og:title" content="{{ page.title }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="{{ page.permalink | safe }}/index.html" />
+{% endmacro metadata %}
