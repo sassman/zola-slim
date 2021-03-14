@@ -24,13 +24,13 @@
 {% endmacro header %}
 
 {% macro post_header(page) %}
-<h2 class="post-title"><a href="{{ page.permalink }}">{{ page.title }}</a></h2>
+<h2 class="post-title"><a href="{{ page.permalink }}index.html">{{ page.title }}</a></h2>
 <div class="post-header">
     <span class="post-date">{{ page.date | date(format="%B %d, %Y") }}</span>
     {% if page.taxonomies.tags %}
     <div class="post-tags">
         {% for tag in page.taxonomies.tags %}
-        <span class="post-tag">#<a href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}">{{ tag }}</a></span>
+        <span class="post-tag">#<a href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}index.html">{{ tag }}</a></span>
         {% endfor %}
     </div>
     {% endif %}
@@ -45,7 +45,7 @@
     {% if page.summary %}
     <div class="summary">
         {{ page.summary | safe | striptags }}
-        <a class="read-more" href="{{ page.permalink }}">&hellip;</a>
+        <a class="read-more" href="{{ page.permalink }}index.html">&hellip;</a>
     </div>
     {% endif %}
     {% elif config.extra.slim_content %}
