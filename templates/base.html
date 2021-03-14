@@ -7,10 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
     <meta name="description" content="{% block description %}{{ config.description }}{% endblock description %}">
     <title>{% block title %}{{ config.title }}{% endblock title %}</title>
-    <link rel="stylesheet" href="{{ get_url(path="slim.css", trailing_slash=false) }}">
+    <link rel="stylesheet"
+          href="{{ get_url(path="slim.css", trailing_slash=false) | safe }}?hash={{ get_file_hash(path="slim.css", sha_type=256) | truncate(length=8, end="") }}">
     {% if config.generate_rss %}
     <link rel="alternate" type="application/rss+xml" title="{{ config.title }} RSS"
-        href="{{ get_url(path="rss.xml", trailing_slash=false) }}">
+          href="{{ get_url(path="rss.xml", trailing_slash=false) | safe }}?hash={{ get_file_hash(path="rss.xml", sha_type=256) | truncate(length=8, end="") }}">
     {% endif %}
     {% block extra_head %}{% endblock extra_head %}
 </head>
@@ -28,7 +29,7 @@
         </div>
         {{ macros::footer() }}
     </div>
-    <script src="{{ get_url(path="js/slim.js", trailing_slash=false) }}"></script>
+    <script src="{{ get_url(path="js/slim.js", trailing_slash=false) | safe }}?hash={{ get_file_hash(path="js/slim.js", sha_type=256) | truncate(length=8, end="") }}"></script>
     {% block extra_script %}{% endblock extra_script %}
 </body>
 
