@@ -1,6 +1,6 @@
 {% macro header() %}
 <div class="header">
-    <h1 class="site-title"><a href="{{ config.base_url }}">{{ config.title }}</a></h1>
+    <h1 class="site-title"><a href="{{ config.base_url | safe }}">{{ config.title }}</a></h1>
     <p class="site-tagline">{{ config.description }}</p>
     <div class="nav">
         <a class="nav-btn" href="#" aria-label="Global Menu">
@@ -9,7 +9,7 @@
         <ul class="nav-list">
             {% if config.extra.slim_menu %}
             {% for item in config.extra.slim_menu %}
-            <li><a href="{{ item.url | safe | replace(from="$BASE_URL", to=config.base_url) }}">{{ item.name }}</a></li>
+            <li><a href="{{ item.url | safe | replace(from="$BASE_URL", to=config.base_url) | safe }}">{{ item.name }}</a></li>
             {% endfor %}
             {% endif %}
             <li class="spacer">&ac;</li>
@@ -24,7 +24,7 @@
 {% endmacro header %}
 
 {% macro post_header(page) %}
-<h2 class="post-title"><a href="{{ page.permalink }}index.html">{{ page.title }}</a></h2>
+<h2 class="post-title"><a href="{{ page.permalink | safe }}index.html">{{ page.title }}</a></h2>
 <div class="post-header">
     <span class="post-date">{{ page.date | date(format="%B %d, %Y") }}</span>
     {% if page.taxonomies.tags %}
@@ -45,7 +45,7 @@
     {% if page.summary %}
     <div class="summary">
         {{ page.summary | safe | striptags }}
-        <a class="read-more" href="{{ page.permalink }}index.html">&hellip;</a>
+        <a class="read-more" href="{{ page.permalink | safe }}index.html">&hellip;</a>
     </div>
     {% endif %}
     {% elif config.extra.slim_content %}
