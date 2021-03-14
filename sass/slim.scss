@@ -1,3 +1,4 @@
+//<editor-fold desc="font-face region">
 // @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Source+Code+Pro?display=swap);
 /* cyrillic-ext */
 @font-face {
@@ -125,6 +126,7 @@
   src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwlxdu3cOWxw.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+//</editor-fold>
 
 $main-font: 'Source Sans Pro', "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", Arial, Serif;
 $secondary-font: 'Source Sans Pro', "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -548,7 +550,7 @@ button:active,
 .post-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
 }
 
 .post-date {
@@ -567,7 +569,7 @@ button:active,
   color: #ccc;
   display: block;
   font-size: 14px;
-  margin-right: 15px;
+  margin-right: 10px;
   text-align: right;
 }
 
