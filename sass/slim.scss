@@ -358,6 +358,7 @@ button:active,
   left: -15px;
   transform: translateX(-100%);
   text-align: right;
+  z-index: 999;
 }
 
 .nav-btn {
@@ -382,6 +383,10 @@ button:active,
 .nav-btn.is-on + .nav-list {
   background: #ffffff;
   display: block;
+
+  ul li {
+    display: block;
+  }
 }
 
 .nav-list {
@@ -597,9 +602,10 @@ button:active,
     margin-left: 15px;
   }
   .nav-list {
-    transform: translateX(100%);
-    li {
-      display: inline;
-    }
+    transform: translateX(65%);
+    text-align: left;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+    padding: 5px 15px;
+    margin: 0;
   }
 }
