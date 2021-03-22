@@ -564,10 +564,14 @@ button:active,
   align-items: baseline;
 }
 
-.post-date {
+.post-date, figcaption .caption {
   color: $grey;
   font-size: 14px;
   white-space: nowrap;
+}
+
+figcaption .caption {
+  text-align: center;
 }
 
 .post-content {
